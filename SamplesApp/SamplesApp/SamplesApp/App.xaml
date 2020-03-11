@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                        xmlns:prism="clr-namespace:Prism.Unity;assembly=Prism.Unity.Forms"
+                        xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                        x:Class="SamplesApp.App">
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <!--Colors-->
+            <Color x:Key="WhiteColor">#FFFFFF</Color>
+            <Color x:Key="DarkGrayColor">#25265E</Color>
+            <Color x:Key="LabelTextColor">#535D7E</Color>
+            <Color x:Key="PlaceholderColor">#A9AEBE</Color>
+            <Color x:Key="BlueColor">#0076BA</Color>
+            <Color x:Key="DarkBlueColor">#004F7D</Color>
+            <Color x:Key="LightGrayColor">#A4A4BD</Color>
+            <Color x:Key="RedColor">#D71E00</Color>
+            <Color x:Key="FrameColor">#DADAED</Color>
+            <Color x:Key="LightBlackColor">#707070</Color>
+
+            <OnPlatform x:Key="FontSize14"
+                        x:TypeArguments="x:Double"
+                        Android="14"
+                        iOS="14" />
+            <OnPlatform x:Key="FontSize16"
+                        x:TypeArguments="x:Double"
+                        Android="16"
+                        iOS="16" />
+            <OnPlatform x:Key="FontSize18"
+                        x:TypeArguments="x:Double"
+                        Android="18"
+                        iOS="18" />
+            <OnPlatform x:Key="FontSize20"
+                        x:TypeArguments="x:Double"
+                        Android="20"
+                        iOS="20" />
+            <OnPlatform x:Key="FontSize26"
+                        x:TypeArguments="x:Double"
+                        Android="26"
+                        iOS="26" />
+
+            <Style TargetType="ContentPage"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="ios:Page.UseSafeArea"
+                        Value="True" />
+                <Setter Property="Visual"
+                        Value="Material" />
+                <Setter Property="BackgroundColor"
+                        Value="{StaticResource WhiteColor}" />
+            </Style>
+
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor"
+                        Value="{StaticResource WhiteColor}" />
+                <Setter Property="BarTextColor"
+                        Value="{StaticResource DarkGrayColor}" />
+            </Style>
+
+            <Style TargetType="Entry"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="PlaceholderColor"
+                        Value="{StaticResource LightGrayColor}" />
+                <Setter Property="TextColor"
+                        Value="{StaticResource LabelTextColor}" />
+                <Setter Property="BackgroundColor"
+                        Value="Transparent" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</prism:PrismApplication>

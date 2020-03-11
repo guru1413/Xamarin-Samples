@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="http://prismlibrary.com"
+             xmlns:Behaviors="clr-namespace:SamplesApp.Behaviors"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Title="Welcome"
+             BackgroundColor="{StaticResource WhiteColor}"
+             x:Class="SamplesApp.Views.LoginPage">
+
+    <ScrollView>
+        <StackLayout VerticalOptions="EndAndExpand"
+                     Spacing="15"
+                     Padding="15">
+            <Label Text="Hello!"
+                   FontSize="{StaticResource FontSize26}"
+                   TextColor="{DynamicResource LabelTextColor}" />
+
+            <Label Text="Welcome to my app"
+                   FontSize="{StaticResource FontSize14}"
+                   HorizontalOptions="StartAndExpand"
+                   TextColor="{DynamicResource PlaceholderColor}" />
+
+            <Entry Placeholder="E-Mail Address"
+                   Text="{Binding EmailId,Mode=TwoWay}"
+                   Keyboard="Email" />
+
+            <Entry x:Name="passwordEntry"
+                   Placeholder="Password"
+                   Text="{Binding Password,Mode=OneWayToSource}"
+                   IsPassword="True" />
+
+            <Button Text="Login"
+                    Command="{Binding LoginCommand}"
+                    FontSize="{StaticResource FontSize18}"
+                    TextColor="{StaticResource WhiteColor}"
+                    BackgroundColor="{StaticResource DarkBlueColor}"
+                    CornerRadius="5" />
+
+            <Button Text="Forgot Password?"
+                    TextColor="{DynamicResource BlueColor}"
+                    FontSize="{StaticResource FontSize16}"
+                    Command="{Binding ButtonTappedCommand}"
+                    CommandParameter="You tapped on Forgot password"
+                    Visual="Default"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center" />
+
+            <Label Text="Still without account?"
+                   TextColor="{DynamicResource LightGrayColor}"
+                   HorizontalOptions="Center"
+                   FontSize="{StaticResource FontSize14}" />
+
+            <Button Text="Create one"
+                    TextColor="{DynamicResource RedColor}"
+                    FontSize="{StaticResource FontSize18}"
+                    Command="{Binding ButtonTappedCommand}"
+                    CommandParameter="You tapped on create one button"
+                    Visual="Default"
+                    BackgroundColor="Transparent"
+                    HorizontalOptions="Center" />
+
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
