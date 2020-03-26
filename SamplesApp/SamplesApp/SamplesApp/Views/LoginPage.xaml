@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="http://prismlibrary.com"
              xmlns:Behaviors="clr-namespace:SamplesApp.Behaviors"
+             xmlns:controls="clr-namespace:SamplesApp.Controls"
              prism:ViewModelLocator.AutowireViewModel="True"
              Title="Welcome"
              BackgroundColor="{StaticResource WhiteColor}"
@@ -20,15 +21,74 @@
                    FontSize="{StaticResource FontSize14}"
                    HorizontalOptions="StartAndExpand"
                    TextColor="{DynamicResource PlaceholderColor}" />
-
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="EndAndExpand">
+                <Label Text="Want to view different entry control ?" />
+                <Switch x:Name="switch"/>
+            </StackLayout>
             <Entry Placeholder="E-Mail Address"
                    Text="{Binding EmailId,Mode=TwoWay}"
-                   Keyboard="Email" />
+                   IsVisible="True"
+                   Keyboard="Email">
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry"
+                                 Binding="{Binding Source={x:Reference switch},Path=IsToggled}"
+                                 Value="True">
+                        <Setter Property="IsVisible"
+                                Value="False" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <controls:ImageEntry Image="email"
+                                 BackgroundColor="{DynamicResource BlueColor}"
+                                 Text="{Binding EmailId,Mode=TwoWay}"
+                                 Placeholder="E-Mail Address"
+                                 TextColor="White"
+                                 LineColor="Accent"
+                                 Keyboard="Email"
+                                 IsVisible="False">
+                <controls:ImageEntry.Triggers>
+                    <DataTrigger TargetType="controls:ImageEntry"
+                                 Binding="{Binding Source={x:Reference switch},Path=IsToggled}"
+                                 Value="True">
+                        <Setter Property="IsVisible"
+                                Value="True" />
+                    </DataTrigger>
+                </controls:ImageEntry.Triggers>
+            </controls:ImageEntry>
 
             <Entry x:Name="passwordEntry"
                    Placeholder="Password"
                    Text="{Binding Password,Mode=OneWayToSource}"
-                   IsPassword="True" />
+                   IsPassword="True">
+                <Entry.Triggers>
+                    <DataTrigger TargetType="Entry"
+                                 Binding="{Binding Source={x:Reference switch},Path=IsToggled}"
+                                 Value="True">
+                        <Setter Property="IsVisible"
+                                Value="False" />
+                    </DataTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <controls:ImageEntry Image="password"
+                                 BackgroundColor="{DynamicResource BlueColor}"
+                                 Text="{Binding Password,Mode=OneWayToSource}"
+                                 Placeholder="Password"
+                                 IsPassword="True"
+                                 TextColor="White"
+                                 LineColor="Accent"
+                                 Keyboard="Email"
+                                 IsVisible="False">
+                <controls:ImageEntry.Triggers>
+                    <DataTrigger TargetType="controls:ImageEntry"
+                                 Binding="{Binding Source={x:Reference switch},Path=IsToggled}"
+                                 Value="True">
+                        <Setter Property="IsVisible"
+                                Value="True" />
+                    </DataTrigger>
+                </controls:ImageEntry.Triggers>
+            </controls:ImageEntry>
+
 
             <Button Text="Login"
                     Command="{Binding LoginCommand}"
